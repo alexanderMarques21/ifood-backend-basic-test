@@ -5,8 +5,11 @@ Este projeto foi desenvolvido a fim de cumprir os requisitos propostos no backen
 ## Tecnologias utilizadas
 
 **Spring Boot**: Na versão 2.3.7.
+
 **Open-feign** : Utilizado como http client.
+
 **Hazelcast**: Utilizado para cacher as chamadas a api de clima.
+
 **Resilliency4j**: Utilizado o padrão Circuit-breaker para lidar com tolerância a falhas nas chamadas da api de clima.
 
 ### GET-STARTED
