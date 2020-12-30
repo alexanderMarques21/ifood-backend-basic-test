@@ -4,6 +4,9 @@ import com.ifood.integrations.OpenWeatherClient;
 import com.ifood.integrations.WeatherResponse;
 import feign.FeignException;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.slf4j.event.Level;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +22,8 @@ public class Weather {
     @Autowired
     private OpenWeatherClient openWeatherClient;
 
+    private Logger logger = LoggerFactory.getLogger(Weather.class);
+
 
     @GetMapping
     @CircuitBreaker(name = "weather", fallbackMethod = "weatherFallback")
@@ -32,6 +37,11 @@ public class Weather {
     }
 
     private ResponseEntity<String> weatherFallback(FeignException e) {
+        logger.info("Error on call api open weather response-status: {}", e.status());
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("Content : {}", e.responseBody());
+        }
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body("Sorry we couldn't connect to an required external server");
     }
 }
