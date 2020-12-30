@@ -1,14 +1,20 @@
-# iFood Backend Basic Test
+# Projeto desenvolvido com base no back-end basic test do IFood
 
-Este é um projeto base para demonstração de um micro-serviço RESTful fictício.
+Este projeto foi desenvolvido a fim de cumprir os requisitos propostos no backend basic teste do IFood.
 
-Recomenda-se gastar entre 4 a 6 horas para realizar essas tarefas. As duas primeiras são as mais importantes, 
-enquanto que as duas últimas são opcionais, para quem conseguir terminar antes do previsto.
+## Tecnologias utilizadas
 
-Esse projeto foi iniciado a partir do [Spring Initializr][SpringInitializr]. É o boilerplate padrão do Spring  
-com [Spring Boot][SpringBoot] 1.5.2 (torna o micro-serviço executável, sem necessidade de deploy para um servidor).
+**Spring Boot**: Na versão 2.3.7.
+**Open-feign** : Utilizado como http client.
+**Hazelcast**: Utilizado para cacher as chamadas a api de clima.
+**Resilliency4j**: Utilizado o padrão Circuit-breaker para lidar com tolerância a falhas nas chamadas da api de clima.
 
-Crie um *fork* deste repositório e siga as tarefas abaixo.
+### GET-STARTED
+Utilize o endpoint /weather?city={cityname} informando com querystring a cidade para retornar os dados climaticos do local informado.
+**Obs** : É necessaria passar uma key válida da api do openweather como variável de ambiente: **API_KEY**
+
+
+
 
 ## Tarefas
 
